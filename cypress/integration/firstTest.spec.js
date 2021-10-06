@@ -1,34 +1,45 @@
-it('Search elements by ID', () => {
-    cy.visit('https://facebook.com')
-    cy.get('#email')
+// it('Search elements by ID', () => {
+//     cy.visit('https://facebook.com')
+//     cy.get('#email')
+// })
+//
+// it('Search elements by Class', () => {
+//     cy.visit('https://docs.cypress.io/api/commands/get.html#Syntax')
+//     cy.get('.ds-input')
+// })
+//
+// it('Search elements by Tag', () => {
+//     cy.visit('https://docs.cypress.io/api/commands/get.html#Syntax')
+//     cy.get('nav')
+// })
+//
+// it('Search elements by Tag value', () => {
+//     cy.visit('https://facebook.com')
+//     cy.get('[name="pass"]')
+// })
+//
+// it('Search elements by Different Tag', () => {
+//     cy.visit('https://facebook.com')
+//     cy.get('[data-testid="open-registration-form-button"][role="button"]')
+// })
+//
+// it('Search elements by Different Types', () => {
+//     cy.visit('https://docs.cypress.io/api/commands/get.html#Syntax')
+//     cy.get('button[type="button"][title="close banner"]')
+// })
+//
+// it.only('Search elements by Contains Name', () => {
+//     cy.visit('https://next.privat24.ua/')
+//     cy.get('*[class^="card"]')
+// })
+
+it('Using Get with Find and Eq', () => {
+    cy.visit('https://next.privat24.ua/deposit/open')
+    cy.get('tbody').find('td').find('div').find('button').eq('0')
 })
 
-it('Search elements by Class', () => {
+it.only('Using Get with Find and Eq', () => {
+    cy.viewport(1800, 700)
     cy.visit('https://docs.cypress.io/api/commands/get.html#Syntax')
-    cy.get('.ds-input')
-})
-
-it('Search elements by Tag', () => {
-    cy.visit('https://docs.cypress.io/api/commands/get.html#Syntax')
-    cy.get('nav')
-})
-
-it('Search elements by Tag value', () => {
-    cy.visit('https://facebook.com')
-    cy.get('[name="pass"]')
-})
-
-it('Search elements by Different Tag', () => {
-    cy.visit('https://facebook.com')
-    cy.get('[data-testid="open-registration-form-button"][role="button"]')
-})
-
-it('Search elements by Different Types', () => {
-    cy.visit('https://docs.cypress.io/api/commands/get.html#Syntax')
-    cy.get('button[type="button"][title="close banner"]')
-})
-
-it.only('Search elements by Contains Name', () => {
-    cy.visit('https://next.privat24.ua/')
-    cy.get('*[class^="card"]')
+    cy.get('aside').find('div').find('ol').find('li').find('a').eq(0)
 })
