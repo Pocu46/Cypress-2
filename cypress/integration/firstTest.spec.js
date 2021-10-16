@@ -102,8 +102,104 @@ it('Check is correct attr in button', () => {
         .and('match', /button/)
 })
 
-it.only('Check is correct URL', () => {
+it('Check is correct URL', () => {
     cy.visit('https://next.privat24.ua?lang=en')
     cy.url()
         .should('eq', 'https://next.privat24.ua/?lang=en')
+})
+
+it('type', () => {
+    cy.visit('https://next.privat24.ua/mobile?lang=en')
+        .get('[data-qa-node="phone-number"]')
+        .type('112233344')
+})
+
+it('focus', () => {
+    cy.visit('https://next.privat24.ua/mobile?lang=en')
+        .get('[data-qa-node="amount"]')
+        .focus()
+})
+
+it('blur', () => {
+    cy.visit('https://next.privat24.ua/mobile?lang=en')
+        .get('[data-qa-node="amount"]')
+        .focus()
+        .blur()
+})
+
+it('clear', () => {
+    cy.visit('https://next.privat24.ua/mobile?lang=en')
+        .get('[data-qa-node="amount"]')
+        .type(999)
+        .wait(2000)
+        .clear()
+})
+
+it('submit', () => {
+    cy.visit('https://next.privat24.ua/mobile?lang=en')
+        .get('form[method="post"]')
+        .submit()
+})
+
+it('submit', () => {
+    cy.visit('https://next.privat24.ua/mobile?lang=en')
+        .get('[data-qa-value="manual"]')
+        .click()
+})
+
+it('rightclick', () => {
+    cy.visit('https://example.cypress.io/commands/actions')
+        .contains('Right click to edit')
+        .rightclick()
+})
+
+it('dblclick', () => {
+    cy.visit('https://yari-demos.prod.mdn.mozit.cloud/en-US/docs/Web/API/Element/dblclick_event/_sample_.Examples.html')
+        .contains('My Card')
+        .wait(2000)
+        .dblclick()
+})
+
+it('check', () => {
+    cy.visit('https://www.facebook.com/r.php')
+        .get('input[value="2"]')
+        .check()
+})
+
+it('uncheck', () => {
+    cy.visit('https://en.privatbank.ua/')
+        .get('#switch-input')
+        .check({force: true})
+        .wait(2000)
+        .uncheck({force: true})
+})
+
+it('select', () => {
+    cy.visit('https://www.facebook.com/r.php?locale=en_US')
+        .get('#month')
+        .select('Feb')
+        .get('#day')
+        .select('12')
+        .get('#year')
+        .select('1991')
+})
+
+it('scrollIntoView', () => {
+    cy.visit('https://next.privat24.ua/mobile?lang=en')
+        .get('[data-qa-node="lang"]')
+        .wait(2000)
+        .scrollIntoView()
+})
+
+it('scrollTo', () => {
+    cy.visit('https://next.privat24.ua/mobile?lang=en')
+        .wait(2000)
+    cy.scrollTo(0, 500)
+})
+
+it.only('scrollTo', () => {
+    cy.visit('https://next.privat24.ua/mobile?lang=en')
+        .contains('Services')
+        .wait(2000)
+        .trigger('mouseover')
 })
