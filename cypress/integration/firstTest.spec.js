@@ -1,37 +1,37 @@
-// it('Search elements by ID', () => {
-//     cy.visit('https://facebook.com')
-//     cy.get('#email')
-// })
-//
-// it('Search elements by Class', () => {
-//     cy.visit('https://docs.cypress.io/api/commands/get.html#Syntax')
-//     cy.get('.ds-input')
-// })
-//
-// it('Search elements by Tag', () => {
-//     cy.visit('https://docs.cypress.io/api/commands/get.html#Syntax')
-//     cy.get('nav')
-// })
-//
-// it('Search elements by Tag value', () => {
-//     cy.visit('https://facebook.com')
-//     cy.get('[name="pass"]')
-// })
-//
-// it('Search elements by Different Tag', () => {
-//     cy.visit('https://facebook.com')
-//     cy.get('[data-testid="open-registration-form-button"][role="button"]')
-// })
-//
-// it('Search elements by Different Types', () => {
-//     cy.visit('https://docs.cypress.io/api/commands/get.html#Syntax')
-//     cy.get('button[type="button"][title="close banner"]')
-// })
-//
-// it.only('Search elements by Contains Name', () => {
-//     cy.visit('https://next.privat24.ua/')
-//     cy.get('*[class^="card"]')
-// })
+it('Search elements by ID', () => {
+    cy.visit('https://facebook.com')
+    cy.get('#email')
+})
+
+it('Search elements by Class', () => {
+    cy.visit('https://docs.cypress.io/api/commands/get.html#Syntax')
+    cy.get('.ds-input')
+})
+
+it('Search elements by Tag', () => {
+    cy.visit('https://docs.cypress.io/api/commands/get.html#Syntax')
+    cy.get('nav')
+})
+
+it('Search elements by Tag value', () => {
+    cy.visit('https://facebook.com')
+    cy.get('[name="pass"]')
+})
+
+it('Search elements by Different Tag', () => {
+    cy.visit('https://facebook.com')
+    cy.get('[data-testid="open-registration-form-button"][role="button"]')
+})
+
+it('Search elements by Different Types', () => {
+    cy.visit('https://docs.cypress.io/api/commands/get.html#Syntax')
+    cy.get('button[type="button"][title="close banner"]')
+})
+
+it.only('Search elements by Contains Name', () => {
+    cy.visit('https://next.privat24.ua/')
+    cy.get('*[class^="card"]')
+})
 
 it('Using Get with Find and Eq', () => {
     cy.visit('https://next.privat24.ua/deposit/open')
@@ -202,83 +202,4 @@ it('scrollTo', () => {
         .contains('Services')
         .wait(2000)
         .trigger('mouseover')
-})
-
-it('Replenishment of Ukranian mobile phone number', () => {
-    cy.visit('https://next.privat24.ua/mobile?lang=en')
-        .get('[data-qa-node="phone-number"]')
-        .type('686979712')
-        .get('[data-qa-node="amount"]')
-        .type('1')
-        .get('[data-qa-node="numberdebitSource"]')
-        .type('4552331448138217')
-        .get('[data-qa-node="expiredebitSource"]')
-        .type('0524')
-        .get('[data-qa-node="cvvdebitSource"]')
-        .type('111')
-        .wait(3000)
-        .get('[data-qa-node="firstNamedebitSource"]')
-        .type('Valentino')
-        .get('[data-qa-node="lastNamedebitSource"]')
-        .type('Rossi')
-        .wait(3000)
-        .get('[data-qa-node="submit"]')
-        .click()
-        .get('[data-qa-node="card"]')
-        .should('have.text', '4552 **** **** 8217')
-        .get('[data-qa-node="amount"]')
-        .should('have.text', '1')
-        .get('[data-qa-node="currency"]')
-        .eq(0)
-        .should('contain.text', 'UAH')
-        .get('[data-qa-node="commission"]')
-        .eq(1)
-        .should('have.text', '2')
-        .get('[data-qa-node="commission-currency"]')
-        .should('contain.text', 'UAH')
-    })
-
-it.only('Money transfer between forign cards', () => {
-    cy.visit('https://next.privat24.ua/money-transfer/card?lang=en')
-        .get('[data-qa-node="numberdebitSource"]')
-        .type('4552331448138217')
-        .get('[data-qa-node="expiredebitSource"]')
-        .type('0524')
-        .get('[data-qa-node="cvvdebitSource"]')
-        .type('111')
-        .wait(3000)
-        .get('[data-qa-node="firstNamedebitSource"]')
-        .type('Shayne')
-        .get('[data-qa-node="lastNamedebitSource"]')
-        .type('McConnell')
-        .get('[data-qa-node="numberreceiver"]')
-        .type('5309233034765085')
-        .get('[data-qa-node="firstNamereceiver"]')
-        .type('Juliana')
-        .get('[data-qa-node="lastNamereceiver"]')
-        .type('Janssen')
-        .get('[data-qa-node="amount"]')
-        .type('300')
-        .get('[data-qa-node="toggle-comment"]')
-        .click()
-        .get('[data-qa-node="comment"]')
-        .type('Cypress test')
-        .get('button[type="submit"]')
-        .click()
-        .get('[data-qa-node="payer-card"]')
-        .should('have.text', '* 8217')
-        .get('[data-qa-node="receiver-card"]')
-        .should('have.text', '* 5085')
-        .get('[data-qa-node="payer-amount"]')
-        .should('have.text', '300 UAH')
-        .get('[data-qa-node="payer-currency"]')
-        .should('have.text', '89.10 UAH')
-        .get('[data-qa-node="total"]')
-        .find('span')
-        .should('contain.text', '389.10')
-        .get('[data-qa-node="total"]')
-        .find('small')
-        .should('contain.text', 'UAH')
-        .get('[data-qa-node="comment"]')
-        .should('have.text', 'Cypress test')
 })
