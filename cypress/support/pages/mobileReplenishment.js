@@ -4,30 +4,11 @@ export class MobileReplenishment {
             .type(phoneNumber)
     }
 
-    typeAmount(amount) {
-        cy.get('[data-qa-node="amount"]')
-            .type(amount)
-    }
-
-    typeDebitCardData(cardNumber, expDate, cvv) {
-        cy.get('[data-qa-node="numberdebitSource"]')
-            .type(cardNumber)
-            .get('[data-qa-node="expiredebitSource"]')
-            .type(expDate)
-            .get('[data-qa-node="cvvdebitSource"]')
-            .type(cvv)
-    }
-
     typeCardOwnerName(name, surname) {
         cy.get('[data-qa-node="firstNamedebitSource"]')
             .type(name)
             .get('[data-qa-node="lastNamedebitSource"]')
             .type(surname)
-    }
-
-    submitPayment() {
-        cy.get('[data-qa-node="submit"]')
-            .click()
     }
 
     checkDebitCard(debitCard) {
