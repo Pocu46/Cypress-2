@@ -1,7 +1,30 @@
 import {mobileReplenishment} from "../support/pages/mobileReplenishment";
 import {basePage} from "../support/pages/basePage";
+import {archivePage} from "../support/pages/archive";
 
-it('Replenishment of Ukranian mobile phone number', () => {
+beforeEach('setup success response with stub', () => {
+    cy.intercept('https://next.privat24.ua/api/p24/pub/confirm/check?',
+        {fixture: 'confirmResponse/success.json'})
+
+    cy.intercept('https://next.privat24.ua/history/api/p24/pub/archive',
+        {fixture: 'archiveResponse/success.json'})
+})
+
+it('check success state in the archive | public session', () => {
+    basePage.open('https://next.privat24.ua?lang=en');
+    archivePage.selectArchiveMenu()
+})
+
+it('check error state in the archive | public session', () => {
+    cy.intercept('https://next.privat24.ua/history/api/p24/pub/archive',
+        {fixture: 'archiveResponse/error.json'})
+
+    basePage.open('https://next.privat24.ua?lang=en');
+    archivePage.selectArchiveMenu()
+
+})
+
+it.skip('Replenishment of Ukranian mobile phone number', () => {
     basePage.open('https://next.privat24.ua/mobile?lang=en')
 
     mobileReplenishment.typePhoneNumber('686979712')
@@ -17,4 +40,7 @@ it('Replenishment of Ukranian mobile phone number', () => {
     mobileReplenishment.checkDebitAmountAndCommission('2')
     mobileReplenishment.checkReceiverAmount('1')
     mobileReplenishment.checkPaymentCurrency('UAH')
+    cy.contains('Confirm')
+        .click()
+
 })
