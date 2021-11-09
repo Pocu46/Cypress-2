@@ -1,5 +1,15 @@
 {
-  "baseUrl": "https://next.privat24.ua",
-  "ignoreTestFiles": "**/examples/*"
+    "env": {
+        "cypress-plugin-snapshots": {
+            "imageConfig": {
+                "threshold": 1,
+                "thresholdType": "pixel"
+            }
+        }
+    },
+    "ignoreTestFiles": [
+        "**/__snapshots__/*",
+        "**/__image_snapshots__/*",
+        "**/examples/*"
+    ]
 }
-

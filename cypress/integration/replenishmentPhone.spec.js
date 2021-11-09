@@ -22,6 +22,8 @@ it('check error state in the archive | public session', () => {
     basePage.open('https://next.privat24.ua?lang=en');
     archivePage.selectArchiveMenu()
 
+    // cy.wait(2000).get('tbody').toMatchImageSnapshot()
+    cy.wait(2000).document().toMatchImageSnapshot()
 })
 
 it.skip('Replenishment of Ukranian mobile phone number', () => {
